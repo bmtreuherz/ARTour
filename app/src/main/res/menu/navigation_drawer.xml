@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="@string/nav_home" />
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/ic_map"
+            android:title="@string/nav_map" />
+        <item
+            android:id="@+id/nav_camera_overlay"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/nav_cam" />
+    </group>
+
+    <item android:title="@string/nav_prefs">
+        <menu>
+            <item
+                android:id="@+id/nav_language"
+                android:icon="@drawable/ic_language"
+                android:title="@string/nav_language" />
+        </menu>
+    </item>
+
+</menu>
