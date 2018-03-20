@@ -19,7 +19,7 @@ class ExampleUnitTest {
 
     @Test
     fun get_Locations_Works(){
-        var locations = HttpClient().GetLocations()
+        var locations = HttpClient().getLocations()
         for (loc in locations){
             System.out.println("Testing")
             System.out.println(loc.name)

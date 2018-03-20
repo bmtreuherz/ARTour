@@ -9,7 +9,7 @@ import bmtreuherz.artour.DTOs.Location
 class HttpClient {
 
     // Retrieves a list of Locations.
-    fun GetLocations(): List<Location>{
+    fun getLocations(): List<Location>{
         // TODO: Implement with actual network call
         var list =  ArrayList<Location>()
 
