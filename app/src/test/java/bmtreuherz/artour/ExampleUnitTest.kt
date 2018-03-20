@@ -1,5 +1,7 @@
 package bmtreuherz.artour
 
+import android.util.Log
+import bmtreuherz.artour.Services.HttpClient
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -13,5 +15,21 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
+    }
+
+    @Test
+    fun get_Locations_Works(){
+        var locations = HttpClient().GetLocations()
+        for (loc in locations){
+            System.out.println("Testing")
+            System.out.println(loc.name)
+            System.out.println(loc.description)
+            System.out.println(loc.lat.toString() + ", " + loc.long)
+            for (feat in loc.features){
+                System.out.println("\t" + feat.name)
+                System.out.println("\t" + feat.description)
+                System.out.println("\t" + feat.beaconID)
+            }
+        }
     }
 }
