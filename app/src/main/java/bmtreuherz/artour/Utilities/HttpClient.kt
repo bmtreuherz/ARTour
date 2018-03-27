@@ -23,4 +23,12 @@ class HttpClient {
         list.add(Location("Marston Science Library", 29.648086, -82.344181, "This is the Marston Science Library", marstonFeatures))
         return list
     }
+
+    fun getFeatures(): List<Feature>{
+        var features = ArrayList<Feature>()
+        features.add(Feature("Grand Ballroom", "This is the Reitz Grand ballroom", 0))
+        features.add(Feature("Printer Lab", "This is the Reitz Grand printer lab", 1))
+        features.add(Feature("French Fries", "These are the french fries", 123))
+        return features
+    }
 }

@@ -19,7 +19,7 @@ import bmtreuherz.artour.Utilities.PermissionHelper
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : NavigableActivity() {
 
     companion object {
         val TAG = MainActivity::class.java.simpleName
@@ -29,16 +29,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
-
-        val toggle = ActionBarDrawerToggle(
-                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer_layout.addDrawerListener(toggle)
-        toggle.syncState()
-
-        nav_view.setNavigationItemSelectedListener(this)
-
 
         // Create the broadcast receiver. This is how we will get notified when we enter or exit the region of a beacon
         beaconEventBroadcastReceiver = BeaconEventBroadcastReceiver(object:BeaconEventBroadcastReceiver.BeaconEventDelegate{
@@ -78,13 +68,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         LocalBroadcastManager.getInstance(this).unregisterReceiver(beaconEventBroadcastReceiver)
     }
 
-    override fun onBackPressed() {
-        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
-        }
-    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -102,20 +85,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
-        when (item.itemId) {
-            R.id.nav_map -> {
-                var intent = Intent(this, MapActivity::class.java)
-                startActivity(intent)
-            }
-            R.id.nav_camera_overlay -> {
-                var intent = Intent(this, CamOverlayActivity::class.java)
-                startActivity(intent)
-            }
-        }
+    override fun getCurrentMenuItemID(): Int {
+        return R.id.nav_home
+    }
 
-        drawer_layout.closeDrawer(GravityCompat.START)
-        return true
+    override fun setLayout() {
+        setContentView(R.layout.activity_main)
     }
 }

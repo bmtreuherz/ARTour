@@ -16,8 +16,14 @@
     <string name="nav_home">Home</string>
     <string name="nav_map">Map</string>
     <string name="nav_cam">Camera Overlay</string>
+    <string name="nav_features_in_range">Nearby Features</string>
     <string name="nav_prefs">Preferences</string>
     <string name="nav_language">Language</string>
+    <string name="title_feature_list">Features</string>
+    <string name="title_feature_detail">Feature Detail</string>
+
+    <!--Features In Range-->
+    <string name="features_title">Nearby Features</string>
 
 
 </resources>
