@@ -1,23 +1,20 @@
-package bmtreuherz.artour.Activities
+package bmtreuherz.artour
 
 import android.content.Intent
+import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
-import bmtreuherz.artour.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
-/**
- * Created by Bradley on 3/26/18.
- */
-abstract class NavigableActivity : AppCompatActivity(),  NavigationView.OnNavigationItemSelectedListener {
+class CamOverlayActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setLayout()
+        setContentView(R.layout.activity_cam_overlay)
         setSupportActionBar(toolbar)
 
         val toggle = ActionBarDrawerToggle(
@@ -37,32 +34,18 @@ abstract class NavigableActivity : AppCompatActivity(),  NavigationView.OnNaviga
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-
-        if (item.itemId != getCurrentMenuItemID()){
-            when (item.itemId) {
-                R.id.nav_home -> {
-                    var intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                }
-                R.id.nav_map -> {
-                    var intent = Intent(this, MapActivity::class.java)
-                    startActivity(intent)
-                }
-                R.id.nav_camera_overlay -> {
-                    var intent = Intent(this, CamOverlayActivity::class.java)
-                    startActivity(intent)
-                }
-                R.id.nav_features_in_range -> {
-                    var intent = Intent(this, FeaturesInRangeActivity::class.java)
-                    startActivity(intent)
-                }
+        when (item.itemId) {
+            R.id.nav_home -> {
+                var intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.nav_map -> {
+                var intent = Intent(this, MapActivity::class.java)
+                startActivity(intent)
             }
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
-
-    protected abstract fun getCurrentMenuItemID(): Int
-    protected abstract fun setLayout()
 }
