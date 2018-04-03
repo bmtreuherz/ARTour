@@ -1,7 +1,6 @@
 package bmtreuherz.artour
 
-import android.util.Log
-import bmtreuherz.artour.Services.HttpClient
+import bmtreuherz.artour.Utilities.HttpClient
 import org.junit.Test
 
 import org.junit.Assert.*

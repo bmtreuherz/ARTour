@@ -16,6 +16,10 @@
             android:id="@+id/nav_camera_overlay"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/nav_cam" />
+        <item
+            android:id="@+id/nav_features_in_range"
+            android:icon="@drawable/ic_feature"
+            android:title="@string/nav_features_in_range"/>
     </group>
 
     <item android:title="@string/nav_prefs">

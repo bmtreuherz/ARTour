@@ -6,7 +6,7 @@ package bmtreuherz.artour.DTOs
 class Feature {
     var name: String
     var description: String
-    var beaconID: Int
+    var beaconID: Int // This will be stored in the major value
 
     constructor(name: String, description: String, beaconID: Int){
         this.name = name
