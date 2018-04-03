@@ -18,6 +18,8 @@ import bmtreuherz.artour.Utilities.BeaconEventBroadcastReceiver
 import bmtreuherz.artour.Utilities.PermissionHelper
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import com.google.android.gms.common.ConnectionResult
+import com.google.android.gms.common.GoogleApiAvailability
 
 class MainActivity : NavigableActivity() {
 

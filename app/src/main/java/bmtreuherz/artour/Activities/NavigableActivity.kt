@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.app_bar_main.*
  * Created by Bradley on 3/26/18.
  */
 abstract class NavigableActivity : AppCompatActivity(),  NavigationView.OnNavigationItemSelectedListener {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setLayout()
@@ -26,6 +27,7 @@ abstract class NavigableActivity : AppCompatActivity(),  NavigationView.OnNaviga
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+
     }
 
     override fun onBackPressed() {

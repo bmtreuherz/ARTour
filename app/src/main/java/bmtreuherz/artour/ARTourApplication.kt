@@ -34,7 +34,7 @@ class ARTourApplication : Application() {
     fun startSearchingForBeacons(){
         if (isSearchingForBeacons.compareAndSet(false, true)){
             // Request all the locations
-            var locations = HttpClient().getLocations()
+            var features = HttpClient.getFeatures()
 
             // Create the beacon manager.
             var beaconManager = BeaconManager(applicationContext)
@@ -46,8 +46,7 @@ class ARTourApplication : Application() {
             // Initialize the beacon manager
             beaconManager.connect {
                 // Create a region for each beacon
-                locations
-                    .flatMap { it.features }
+                features
                     .forEach {
                         beaconManager.startMonitoring(BeaconRegion(it.beaconID.toString(),
                                 appUUID, it.beaconID, null))

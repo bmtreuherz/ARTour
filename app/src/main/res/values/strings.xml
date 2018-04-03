@@ -15,6 +15,7 @@
     <!--Nav -->
     <string name="nav_home">Home</string>
     <string name="nav_map">Map</string>
+    <string name="google_maps_API_key">AIzaSyD4IGlQ73tFEKFh8qkn3XGiaUxpbIhLrz4</string>
     <string name="nav_cam">Camera Overlay</string>
     <string name="nav_features_in_range">Nearby Features</string>
     <string name="nav_prefs">Preferences</string>
