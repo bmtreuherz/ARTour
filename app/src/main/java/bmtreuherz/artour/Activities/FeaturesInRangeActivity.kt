@@ -57,7 +57,7 @@ class FeaturesInRangeActivity : NavigableActivity() {
         featuresAdapter.clear()
 
         // Find all the features that are currently in range
-        var featuresInRange = ARTourApplication.getBeaconsInRange()
+        var featuresInRange = ARTourApplication.beaconsInRange
         features = HttpClient.getFeatures()
         for (featureInRange in featuresInRange){
             features

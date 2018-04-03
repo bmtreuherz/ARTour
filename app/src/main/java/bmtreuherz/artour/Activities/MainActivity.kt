@@ -38,7 +38,7 @@ class MainActivity : NavigableActivity() {
                 Log.d(TAG, "Entered Range of Beacon: " + beaconID)
 
                 // Note: At any time, we can get the beaconIDs of all beacons that are currently in range by using:
-                var beacons = ARTourApplication.getBeaconsInRange()
+                var beacons = ARTourApplication.beaconsInRange
             }
 
             override fun onExitedRange(beaconID: Int) {

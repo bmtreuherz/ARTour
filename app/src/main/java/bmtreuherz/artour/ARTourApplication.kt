@@ -20,10 +20,7 @@ class ARTourApplication : Application() {
 
     companion object {
         val TAG = ARTourApplication::class.java.simpleName
-        private var beaconsInRange = ConcurrentSkipListSet<Int>()
-        fun getBeaconsInRange(): Set<Int>{
-            return beaconsInRange
-        }
+        var beaconsInRange = ConcurrentSkipListSet<Int>()
     }
 
     private val appUUID = UUID.fromString("2dd68426-eb4a-4920-b94b-02a7d5ec265c")
