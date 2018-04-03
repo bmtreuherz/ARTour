@@ -58,7 +58,7 @@ class FeaturesInRangeActivity : NavigableActivity() {
 
         // Find all the features that are currently in range
         var featuresInRange = ARTourApplication.getBeaconsInRange()
-        features = HttpClient().getFeatures()
+        features = HttpClient.getFeatures()
         for (featureInRange in featuresInRange){
             features
                     .filter { it.beaconID == featureInRange }
