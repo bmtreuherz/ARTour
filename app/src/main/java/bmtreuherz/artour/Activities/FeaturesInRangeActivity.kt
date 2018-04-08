@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.LocalBroadcastManager
 import android.util.Log
+import android.widget.AdapterView
 import android.widget.ListView
 import bmtreuherz.artour.ARTourApplication
 import bmtreuherz.artour.DTOs.Feature
@@ -30,7 +31,23 @@ class FeaturesInRangeActivity : NavigableActivity() {
         featuresLV = findViewById(R.id.featuresLV)
         featuresAdapter = FeaturesAdapter(this, ArrayList())
 
+
+
+
         featuresLV.adapter = featuresAdapter
+
+        featuresLV.onItemClickListener = AdapterView.OnItemClickListener {
+            adapterView, view, i, l ->
+            var feature = featuresAdapter.getItem(i)
+
+            // Do stuff with the feature you'll need to create a new intent,
+            // add the beaconID as a string extra, and start the activity with the intent
+            //httpClient.getFeatures to get intent
+
+        }
+
+
+
 
         // Create the broadcast receiver. This is how we will get notified when we enter or exit the region of a beacon
         beaconEventBroadcastReceiver = BeaconEventBroadcastReceiver(object: BeaconEventBroadcastReceiver.BeaconEventDelegate{
