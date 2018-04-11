@@ -20,15 +20,10 @@
             android:id="@+id/nav_features_in_range"
             android:icon="@drawable/ic_feature"
             android:title="@string/nav_features_in_range"/>
+        <item
+            android:id="@+id/nav_language"
+            android:icon="@drawable/ic_language"
+            android:title="@string/nav_language" />
     </group>
-
-    <item android:title="@string/nav_prefs">
-        <menu>
-            <item
-                android:id="@+id/nav_language"
-                android:icon="@drawable/ic_language"
-                android:title="@string/nav_language" />
-        </menu>
-    </item>
 
 </menu>

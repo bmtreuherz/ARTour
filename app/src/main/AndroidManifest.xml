@@ -36,8 +36,6 @@
         <activity android:name=".Activities.MapActivity" />
         <activity android:name=".Activities.CamOverlayActivity"/>
         <activity android:name=".Activities.FeaturesInRangeActivity"></activity>
-        <activity android:name=".Activities.Language"
-            android:theme="@style/AppTheme.Language"
-            ></activity>
+        <activity android:name=".Activities.LanguageActivity"></activity>
     </application>
 </manifest>

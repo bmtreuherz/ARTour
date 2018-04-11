@@ -59,7 +59,7 @@ abstract class NavigableActivity : AppCompatActivity(),  NavigationView.OnNaviga
                     startActivity(intent)
                 }
                 R.id.nav_language -> {
-                    var intent = Intent(this, Language::class.java)
+                    var intent = Intent(this, LanguageActivity::class.java)
                     startActivity(intent)
                 }
             }
