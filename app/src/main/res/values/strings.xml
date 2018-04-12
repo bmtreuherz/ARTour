@@ -26,5 +26,9 @@
     <!--Features In Range-->
     <string name="features_title">Nearby Features</string>
 
+    <!--Languages-->
+    <string name="english">English</string>
+    <string name="spanish">Spanish</string>
+    <string name="chinese">Chinese</string>
 
 </resources>
