@@ -27,4 +27,7 @@
     <string name="features_title">Nearby Features</string>
 
 
+    <!--Description-->
+    <string name="description_title">Feature Description</string>
+
 </resources>
