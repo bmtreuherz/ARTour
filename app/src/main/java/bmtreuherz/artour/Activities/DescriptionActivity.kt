@@ -3,15 +3,18 @@ package bmtreuherz.artour.Activities
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.TextView
 import bmtreuherz.artour.DTOs.Feature
 import bmtreuherz.artour.R
 import bmtreuherz.artour.Utilities.HttpClient
+import kotlinx.android.synthetic.main.nav_header.*
 
 class DescriptionActivity : AppCompatActivity() {
 
     private lateinit var featureTitleTV: TextView
     private lateinit var descriptionTitleTV: TextView
+    private lateinit var featureImage: ImageView
 
     companion object {
         val TAG = DescriptionActivity::class.java.simpleName
@@ -24,6 +27,7 @@ class DescriptionActivity : AppCompatActivity() {
 
         featureTitleTV = findViewById(R.id.feature_title)
         descriptionTitleTV = findViewById(R.id.description_title)
+        featureImage = findViewById(R.id.feature_image)
     }
 
     override fun onResume() {
@@ -40,6 +44,10 @@ class DescriptionActivity : AppCompatActivity() {
 
         descriptionTitleTV.text = feature?.name
         featureTitleTV.text = feature?.description
+        //featureImage.setImageDrawable()
+        //change image here
+
+
         Log.d(TAG, "Found feature: " + feature?.name)
     }
 }
