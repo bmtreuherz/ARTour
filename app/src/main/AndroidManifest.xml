@@ -15,11 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_API_key" />
@@ -34,8 +32,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.MapActivity" />
-        <activity android:name=".Activities.CamOverlayActivity"/>
-        <activity android:name=".Activities.FeaturesInRangeActivity"></activity>
+
+        <activity android:name=".Activities.CamOverlayActivity" />
+        <activity android:name=".Activities.FeaturesInRangeActivity" />
+        <activity android:name=".Activities.DescriptionActivity"
+            android:theme="@style/DescriptionActivityTheme"/>
+
         <activity android:name=".Activities.LanguageActivity"></activity>
+
     </application>
+
 </manifest>
