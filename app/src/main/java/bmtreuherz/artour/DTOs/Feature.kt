@@ -9,16 +9,6 @@ class Feature {
     var long: Double
     var lat: Double
     var description: String
-    //var imageLink: String
-
-    /*constructor(name: String, beaconID: Int, long: Double, lat: Double, description: String, imageLink: String){
-        this.name = name
-        this.beaconID = beaconID
-        this.long = long
-        this.lat = lat
-        this.description = description
-        this.imageLink = imageLink
-    }*/
 
     constructor(name: String, beaconID: Int, long: Double, lat: Double, description: String){
         this.name = name
@@ -27,5 +17,4 @@ class Feature {
         this.lat = lat
         this.description = description
     }
-
 }
