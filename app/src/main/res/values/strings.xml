@@ -31,7 +31,4 @@
     <string name="spanish">Spanish</string>
     <string name="chinese">Chinese</string>
 
-    <!--Description-->
-    <string name="description_title">Feature Description</string>
-
 </resources>
