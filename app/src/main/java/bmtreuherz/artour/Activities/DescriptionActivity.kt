@@ -8,7 +8,12 @@ import android.widget.TextView
 import bmtreuherz.artour.DTOs.Feature
 import bmtreuherz.artour.R
 import bmtreuherz.artour.Utilities.HttpClient
+import kotlinx.android.synthetic.main.activity_description.*
 import kotlinx.android.synthetic.main.nav_header.*
+import bmtreuherz.artour.R.id.imageView
+import android.graphics.drawable.Drawable
+import android.view.View
+
 
 class DescriptionActivity : AppCompatActivity() {
 
@@ -42,8 +47,19 @@ class DescriptionActivity : AppCompatActivity() {
             }
         }
 
+
         descriptionTitleTV.text = feature?.name
         featureTitleTV.text = feature?.description
+
+
+        val uri = "@drawable/"+feature?.imageLink
+        val imageResource = resources.getIdentifier(uri, null, packageName)
+        //featureImage = findViewById<View>(R.id.imageView) as ImageView
+        val res = resources.getDrawable(imageResource)
+        featureImage.setImageDrawable(res)
+
+
+        //featureImage.setImageDrawable(feature?.imageLink);
         //featureImage.setImageDrawable()
         //change image here
 
@@ -51,3 +67,5 @@ class DescriptionActivity : AppCompatActivity() {
         Log.d(TAG, "Found feature: " + feature?.name)
     }
 }
+
+
