@@ -9,6 +9,7 @@ object HttpClient {
 
     fun getFeatures(): List<Feature>{
         var features = ArrayList<Feature>()
+<<<<<<< HEAD
         features.add(Feature("Reitz Union", 0, 29.646333, -82.347914, "This building, officially called the J " +
                 "Wayne Reitz Student Union, was " +
                 "named for the University’s 5 th president. The Reitz Union was" +
@@ -31,6 +32,11 @@ object HttpClient {
                         "that take place during freshmen welcome week where peppy upperclassmen try to " +
                         "distract new students from the horrors of on campus living and the lack of variety " +
                         "within the dining halls.", "french_fries"))
+=======
+        features.add(Feature("Reitz Union", 0, 29.646333, -82.347914, "This is the Reitz Untion!"))
+        features.add(Feature("Printer Lab", 1,  0.0, 1.0, "This is the Reitz Grand printer lab"))
+        features.add(Feature("French Fries", 123,  5.2, 3.2, "These are the french fries"))
+>>>>>>> ea34d8fa6a01af4f95064cad01cb8ac481fced18
         return features
     }
 }
