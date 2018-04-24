@@ -54,7 +54,6 @@ class DescriptionActivity : AppCompatActivity() {
 
         val uri = "@drawable/"+feature?.imageLink
         val imageResource = resources.getIdentifier(uri, null, packageName)
-        //featureImage = findViewById<View>(R.id.imageView) as ImageView
         val res = resources.getDrawable(imageResource)
         featureImage.setImageDrawable(res)
 
