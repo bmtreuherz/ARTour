@@ -37,5 +37,7 @@
         <activity android:name=".Activities.CamOverlayActivity"/>
         <activity android:name=".Activities.FeaturesInRangeActivity"></activity>
         <activity android:name=".Activities.LanguageActivity"></activity>
+        <activity android:name=".Activities.DescriptionActivity"
+            android:theme="@style/DescriptionActivityTheme"/>
     </application>
 </manifest>
