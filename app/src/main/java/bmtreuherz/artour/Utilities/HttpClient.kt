@@ -9,19 +9,19 @@ object HttpClient {
 
     fun getFeatures(): List<Feature>{
         var features = ArrayList<Feature>()
-<<<<<<< HEAD
+
         features.add(Feature("Reitz Union", 0, 29.646333, -82.347914, "This building, officially called the J " +
                 "Wayne Reitz Student Union, was " +
                 "named for the University’s 5 th president. The Reitz Union was" +
                 "completed in 1967. The Reitz is a student resource, and offers" +
-                "many services and opportunities for all UF students.",  "reitz_union"))
+                "many services and opportunities for all UF students.",  "reitz_union", "reitz_union_audio"))
         features.add(Feature("Marston Science Library", 1,  0.0, 1.0,
                 "The University of Florida Marston Science Library (MSL) is the science and " +
                         "engineering library of the University of Florida located in Gainesville, Florida, and " +
                         "is administered by the university's George A. Smathers Libraries system."
             +"The Marston Science Library hosts the university's extensive collections in agriculture," +
                         " biological sciences, chemical and physical sciences,"
-            +" engineering, mathematics and statistics. ", "marston"))
+            +" engineering, mathematics and statistics. ", "marston", "marston_audio"))
         //description from https://www.collegemagazine.com/first-let-take-selfie-famous-university-florida-landmarks/
         features.add(Feature("French Fries", 123,  5.2, 3.2,
                 "Deceivingly named after a delicious fried snack, the French Fries are actually " +
@@ -31,12 +31,8 @@ object HttpClient {
                         "this site serves as the meeting place for the “get to know UF” scavenger hunts " +
                         "that take place during freshmen welcome week where peppy upperclassmen try to " +
                         "distract new students from the horrors of on campus living and the lack of variety " +
-                        "within the dining halls.", "french_fries"))
-=======
-        features.add(Feature("Reitz Union", 0, 29.646333, -82.347914, "This is the Reitz Untion!"))
-        features.add(Feature("Printer Lab", 1,  0.0, 1.0, "This is the Reitz Grand printer lab"))
-        features.add(Feature("French Fries", 123,  5.2, 3.2, "These are the french fries"))
->>>>>>> ea34d8fa6a01af4f95064cad01cb8ac481fced18
+                        "within the dining halls.", "french_fries", "french_fries_audio"))
         return features
+
     }
 }

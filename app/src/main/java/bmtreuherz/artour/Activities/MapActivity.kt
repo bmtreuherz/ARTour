@@ -12,6 +12,7 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import android.animation.ValueAnimator
+import android.content.DialogInterface
 import com.google.android.gms.maps.model.Circle
 import com.google.android.gms.maps.model.CircleOptions
 import bmtreuherz.artour.R
@@ -21,8 +22,14 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import android.graphics.Color
+import android.support.v4.content.LocalBroadcastManager
+import android.support.v7.app.AlertDialog
+import android.util.Log
+import bmtreuherz.artour.ARTourApplication
+import bmtreuherz.artour.DTOs.Feature
 import bmtreuherz.artour.R.id.drawer_layout
 import bmtreuherz.artour.R.id.nav_view
+import bmtreuherz.artour.Utilities.BeaconEventBroadcastReceiver
 import bmtreuherz.artour.Utilities.HttpClient
 import java.util.jar.Manifest
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -44,6 +51,11 @@ class MapActivity : NavigableActivity() {
     private lateinit var map: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var lastLocation: Location
+
+    // Event Receiver
+    private lateinit var beaconEventBroadcastReceiver: BeaconEventBroadcastReceiver
+    // All features
+    private lateinit var features: List<Feature>
 
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
@@ -122,6 +134,48 @@ class MapActivity : NavigableActivity() {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
+
+       //Sets instructions for what to do when you get close to a beacon on map screen and gives alertdialog
+       val builder = AlertDialog.Builder(this)
+       beaconEventBroadcastReceiver = BeaconEventBroadcastReceiver(object: BeaconEventBroadcastReceiver.BeaconEventDelegate{
+           override fun onEnteredRange(beaconID: Int) {
+               //adds the nearby feature to the features list
+               Log.d("FEATURES", "Found one in Range")
+               features.filter { it.beaconID == beaconID }
+
+               //We will probably want to add vibration to alert user when dialog happens
+               builder.setTitle("Nearby Beacon Detected")
+               builder.setMessage("Would you like to get more information about this location?")
+               builder.setPositiveButton("Yes", { dialogInterface: DialogInterface, i: Int ->
+                   //Take the user to desription page for specific beacon here
+               })
+               builder.setNegativeButton("No", { dialogInterface: DialogInterface, i: Int ->
+                   //If the user clicks no, exit the dialog and do nothing
+               })
+               builder.show()
+           }
+
+           override fun onExitedRange(beaconID: Int) {
+               Log.d("FEATURES", "Found one exited  Range")
+               features.filter { it.beaconID == beaconID }
+               //will likely want to close out of alert dialog here
+           }
+       })
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        var featuresInRange = ARTourApplication.beaconsInRange
+        features = HttpClient.getFeatures()
+        for (featureInRange in featuresInRange){
+            features
+                    .filter { it.beaconID == featureInRange }
+        }
+
+        var filter = beaconEventBroadcastReceiver.createFilter()
+        LocalBroadcastManager.getInstance(this).registerReceiver(beaconEventBroadcastReceiver, filter)
     }
 
 
