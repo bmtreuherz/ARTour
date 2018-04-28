@@ -3,8 +3,6 @@ package bmtreuherz.artour.Activities
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageView
-import android.widget.TextView
 import bmtreuherz.artour.DTOs.Feature
 import bmtreuherz.artour.R
 import bmtreuherz.artour.Utilities.HttpClient
@@ -15,8 +13,7 @@ import android.graphics.drawable.Drawable
 import android.media.MediaPlayer
 import android.os.Handler
 import android.view.View
-import android.widget.ImageButton
-import android.widget.SeekBar
+import android.widget.*
 
 
 class DescriptionActivity : AppCompatActivity() {
@@ -26,8 +23,9 @@ class DescriptionActivity : AppCompatActivity() {
     private lateinit var featureImage: ImageView
 
     //audio variables
-    private lateinit var audioPlayer: MediaPlayer
     private lateinit var audioSlider: SeekBar
+    private lateinit var playButton: Button
+    private lateinit var audioPlayer: MediaPlayer
     var seekHandler = Handler()
     var wasPlaying = false
 
@@ -44,6 +42,9 @@ class DescriptionActivity : AppCompatActivity() {
         featureTitleTV = findViewById(R.id.feature_title)
         descriptionTitleTV = findViewById(R.id.description_title)
         featureImage = findViewById(R.id.feature_image)
+        audioSlider = findViewById(R.id.audio_seekbar)
+        playButton = findViewById(R.id.audio_button)
+
     }
 
     override fun onResume() {
@@ -89,7 +90,6 @@ class DescriptionActivity : AppCompatActivity() {
     fun audio_setup() {
         //creates the media player and slider objects
         var time = 0
-        audioSlider = findViewById<SeekBar>(R.id.audio_seekbar)
 
 
         //looks for when the seekbar is used
@@ -118,16 +118,15 @@ class DescriptionActivity : AppCompatActivity() {
 
         seekUpdate()
 
-        val playButton = findViewById<ImageButton>(R.id.audio_button)
         playButton.setOnClickListener {
             audioPlayer.isLooping = false
             if (audioPlayer.isPlaying() == true) {
-                playButton.setImageResource(R.drawable.ic_audio_play)
+                playButton.setBackgroundResource(R.drawable.play_button_icon)
                 time = audioPlayer.getCurrentPosition()
                 audioPlayer.pause()
                 wasPlaying = false
             } else if (audioPlayer.isPlaying() == false) {
-                playButton.setImageResource(R.drawable.ic_audio_pause)
+                playButton.setBackgroundResource(R.drawable.ic_audio_pause)
                 audioPlayer.seekTo(time)
                 audioPlayer.start()
                 wasPlaying = true

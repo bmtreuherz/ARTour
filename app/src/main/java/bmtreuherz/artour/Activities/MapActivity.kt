@@ -55,7 +55,6 @@ class MapActivity : NavigableActivity() {
     // Event Receiver
     private lateinit var beaconEventBroadcastReceiver: BeaconEventBroadcastReceiver
     // All features
-    private lateinit var features: List<Feature>
 
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
@@ -136,18 +135,23 @@ class MapActivity : NavigableActivity() {
 
 
        //Sets instructions for what to do when you get close to a beacon on map screen and gives alertdialog
-       val builder = AlertDialog.Builder(this)
        beaconEventBroadcastReceiver = BeaconEventBroadcastReceiver(object: BeaconEventBroadcastReceiver.BeaconEventDelegate{
            override fun onEnteredRange(beaconID: Int) {
                //adds the nearby feature to the features list
                Log.d("FEATURES", "Found one in Range")
-               features.filter { it.beaconID == beaconID }
+               var features = HttpClient.getFeatures()
+               var feature = features.find { it.beaconID == beaconID }
 
+               val builder = AlertDialog.Builder(this@MapActivity)
                //We will probably want to add vibration to alert user when dialog happens
                builder.setTitle("Nearby Beacon Detected")
-               builder.setMessage("Would you like to get more information about this location?")
+               builder.setMessage("Would you like to get more information about: " + feature?.name + " ?")
                builder.setPositiveButton("Yes", { dialogInterface: DialogInterface, i: Int ->
                    //Take the user to desription page for specific beacon here
+                   var intent = Intent(this@MapActivity, DescriptionActivity::class.java)
+                   intent.putExtra(DescriptionActivity.BEACON_ID, feature?.beaconID)
+                   startActivity(intent)
+
                })
                builder.setNegativeButton("No", { dialogInterface: DialogInterface, i: Int ->
                    //If the user clicks no, exit the dialog and do nothing
@@ -157,8 +161,6 @@ class MapActivity : NavigableActivity() {
 
            override fun onExitedRange(beaconID: Int) {
                Log.d("FEATURES", "Found one exited  Range")
-               features.filter { it.beaconID == beaconID }
-               //will likely want to close out of alert dialog here
            }
        })
 
@@ -167,17 +169,15 @@ class MapActivity : NavigableActivity() {
     override fun onResume() {
         super.onResume()
 
-        var featuresInRange = ARTourApplication.beaconsInRange
-        features = HttpClient.getFeatures()
-        for (featureInRange in featuresInRange){
-            features
-                    .filter { it.beaconID == featureInRange }
-        }
-
         var filter = beaconEventBroadcastReceiver.createFilter()
         LocalBroadcastManager.getInstance(this).registerReceiver(beaconEventBroadcastReceiver, filter)
     }
 
+
+    override fun onPause() {
+        super.onPause()
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(beaconEventBroadcastReceiver)
+    }
 
     private fun setUpMap() {
         if (ActivityCompat.checkSelfPermission(this,
