@@ -51,6 +51,9 @@ class DescriptionActivity : AppCompatActivity() {
         super.onResume()
 
         var beaconID = intent.getIntExtra(BEACON_ID, -1)
+        if(Preferences.getLang() == "Spanish") {
+            beaconID += 50
+        }
         var feature: Feature? = null
         var features = HttpClient.getFeatures()
         features.forEach {
@@ -70,7 +73,7 @@ class DescriptionActivity : AppCompatActivity() {
         featureImage.setImageDrawable(res)
 
 
-        val audio_uri:String = "@raw/"+feature?.audioLink
+        var audio_uri:String = "@raw/"+feature?.audioLink
         val audio_resource = resources.getIdentifier(audio_uri, null, packageName)
         audioPlayer = MediaPlayer.create(this, audio_resource)
         audio_setup()
