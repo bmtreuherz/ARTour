@@ -22,23 +22,28 @@ class LanguageActivity : NavigableActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
 
-        //Using this to save checkbox
-        when(Preferences.getLang()) {
+    override fun onResume() {
+        super.onResume()
+
+        when (Preferences.getLang()){
             "English" -> {
-                checkEnglish.setChecked(true)
-                checkChinese.setChecked(false)
-                checkSpanish.setChecked(false)
+                checkEnglish.isChecked = true
+                checkSpanish.isChecked = false
+                checkChinese.isChecked = false
+
             }
             "Spanish" -> {
-                checkEnglish.setChecked(false)
-                checkChinese.setChecked(false)
-                checkSpanish.setChecked(true)
+                checkEnglish.isChecked = false
+                checkSpanish.isChecked = true
+                checkChinese.isChecked = false
+
             }
             "Chinese" -> {
-                checkEnglish.setChecked(false)
-                checkChinese.setChecked(true)
-                checkSpanish.setChecked(false)
+                checkEnglish.isChecked = false
+                checkSpanish.isChecked = false
+                checkChinese.isChecked = true
             }
         }
     }

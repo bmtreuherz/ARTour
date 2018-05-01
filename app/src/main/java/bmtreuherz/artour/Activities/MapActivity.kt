@@ -29,16 +29,12 @@ import bmtreuherz.artour.ARTourApplication
 import bmtreuherz.artour.DTOs.Feature
 import bmtreuherz.artour.R.id.drawer_layout
 import bmtreuherz.artour.R.id.nav_view
-import bmtreuherz.artour.Utilities.BeaconEventBroadcastReceiver
-import bmtreuherz.artour.Utilities.CustomClusterRenderer
-import bmtreuherz.artour.Utilities.HttpClient
-import bmtreuherz.artour.Utilities.MyItem
+import bmtreuherz.artour.Utilities.*
 import java.util.jar.Manifest
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.*
 import com.google.maps.android.clustering.ClusterManager
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
+
 import java.time.LocalTime
 
 class MapActivity : NavigableActivity() {
@@ -126,6 +122,14 @@ class MapActivity : NavigableActivity() {
 
         var filter = beaconEventBroadcastReceiver.createFilter()
         LocalBroadcastManager.getInstance(this).registerReceiver(beaconEventBroadcastReceiver, filter)
+
+        // Check and request bluetooth permissions
+        if (!PermissionHelper.hasScanningPermissions(this)){
+            return
+        }
+
+        // Search for beacons. If we are already searching this will do nothing.
+        (application as ARTourApplication).startSearchingForBeacons()
     }
 
 

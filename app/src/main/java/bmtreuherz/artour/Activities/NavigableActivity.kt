@@ -8,8 +8,8 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import bmtreuherz.artour.R
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.activity_map.*
+import kotlinx.android.synthetic.main.app_bar_map.*
 
 /**
  * Created by Bradley on 3/26/18.
@@ -42,16 +42,8 @@ abstract class NavigableActivity : AppCompatActivity(),  NavigationView.OnNaviga
 
         if (item.itemId != getCurrentMenuItemID()){
             when (item.itemId) {
-                R.id.nav_home -> {
-                    var intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                }
                 R.id.nav_map -> {
                     var intent = Intent(this, MapActivity::class.java)
-                    startActivity(intent)
-                }
-                R.id.nav_camera_overlay -> {
-                    var intent = Intent(this, CamOverlayActivity::class.java)
                     startActivity(intent)
                 }
                 R.id.nav_features_in_range -> {
