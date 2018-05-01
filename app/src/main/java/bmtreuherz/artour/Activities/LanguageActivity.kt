@@ -43,6 +43,30 @@ class LanguageActivity : NavigableActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        when (Preferences.getLang()){
+            "English" -> {
+                checkEnglish.isChecked = true
+                checkSpanish.isChecked = false
+                checkChinese.isChecked = false
+
+            }
+            "Spanish" -> {
+                checkEnglish.isChecked = false
+                checkSpanish.isChecked = true
+                checkChinese.isChecked = false
+
+            }
+            "Chinese" -> {
+                checkEnglish.isChecked = false
+                checkSpanish.isChecked = false
+                checkChinese.isChecked = true
+            }
+        }
+    }
+
     //  Sets other checkboxes empty when one checkbox is clicked
     //Ensures only one option can be selected
     fun onCheckboxClicked(view: View) {
